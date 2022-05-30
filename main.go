@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func dummy(w http.ResponseWriter, req *http.Request) {
+func invocations(w http.ResponseWriter, req *http.Request) {
 	body := req.Body
 	defer body.Close()
 
@@ -18,7 +18,7 @@ func dummy(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/dummy", dummy)
+	http.HandleFunc("/invocations", invocations)
 
 	http.ListenAndServe(":8090", nil)
 }
